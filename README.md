@@ -1,38 +1,46 @@
-# create-svelte
+# Sandwich Generator
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+Generate random sandwiches
 
-## Creating a project
+# Development Guide
 
-If you're seeing this, you've probably already done this step. Congrats!
+1. Install NodeJS
 
+2. Fork the repository
+
+3. Install dependencies
 ```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
+npm install
 ```
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
+4. Run the project locally
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+5. Make some changes
 
-To create a production version of your app:
+6. You can save your github credentials by running
+``` bash
+git config --global credentials.helper store`
+```
+7. Generate a github access token ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token))
 
+8. Add your changes using 
 ```bash
-npm run build
+git add <files>
 ```
 
-You can preview the production build with `npm run preview`.
+9. Commit your changes using 
+```bash
+git commit -m "commit message here"
+```
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+10. Push your changes to your fork
+```bash
+git push
+```
+
+11. Create pull request (should show up when you visit your fork on github.com)
+
+
