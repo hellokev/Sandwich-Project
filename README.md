@@ -22,7 +22,7 @@ npm run dev
 
 6. You can save your github credentials by running
 ``` bash
-git config --global credentials.helper store`
+git config --global credentials.helper store
 ```
 7. Generate a github access token ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token))
 
