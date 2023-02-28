@@ -41,6 +41,8 @@ git commit -m "commit message here"
 git push
 ```
 
-11. Create pull request (should show up when you visit your fork on github.com)
+11. When asked for your credentials, use your GitHub username and the password will be the access token you generated from step 7 
+
+12. Create pull request (should show up when you visit your fork on github.com)
 
 
