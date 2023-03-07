@@ -1,59 +1,51 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+
+let seed = '';
+
+// Generates a 7 random letter seed from a-z and A-Z
+const generateSeed = () => {
+    const allLetters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for(let i = 0; i < 7; i++) {
+        seed += allLetters.charAt(Math.floor(Math.random() * allLetters.length));
+    }
+    generateRandomValues(seed);
+    return seed;
+}
+
+// https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+// https://www.youtube.com/watch?v=7BbL2PZ5394
+// Generates URL
+const addSeed = () => {
+    const url = 'http://127.0.0.1:5173/?';
+    const obj = { s: seed };
+    const searchParams = new URLSearchParams(obj);
+    window.location.href = url + searchParams;
+    readSeed();
+}
+// Read just the seed part of the URL
+const readSeed = () => {
+    const getURL = new URLSearchParams(window.location.search);
+    return getURL.get('s');
+}
+
+// Generate Random Values for Seed
+const generateRandomValues = (seed) => {
+    let seedVal = 0;
+    const values = [];
+    for (let i = 0; i < seed.length; i++) {
+        seedVal += seed.charCodeAt(i);
+        values.push(seedVal)
+    }
+    console.log(values);
+    
+}
+
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
+<button on:click={() => { generateSeed(); addSeed(); }}>7 random letters</button>
+<!-- <p>{letterStr}</p> -->
 
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 0.6;
-	}
 
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
 </style>
